@@ -1,26 +1,10 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
-};
+export const background_variant_1 = '#161622'; // dark_blue/slate
+export const background_variant_2 = '#FFA001'; // yellowish/orange
+export const background_variant_3 = 'rgba(205, 205, 224, 0.08)'; // transparent(showing dark_blue/slate background) - for form inputs
+export const background_variant_4 = '#CDCDE0'; // transparent(showing dark_blue/slate background) - for form inputs
+export const text_variant_1 = '#CDCDE0'; // white-ish/greyish
+export const text_variant_2 = '#161622'; // dark_blue/slate
+export const text_variant_3 = '#FFA001'; // yellowish/orange
+export const border_variant_1 = '#CDCDE0'; // white-ish/greyish
+export const border_variant_2 = '#161622'; // dark_blue/slate
+export const border_variant_3 = '#FFA001'; // yellowish/orange
