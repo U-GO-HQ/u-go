@@ -1,4 +1,5 @@
 export const background_variant_1 = '#161622'; // dark_blue/slate
+export const background_variant_1_light = '#1d1d2b'; // dark_blue/slate
 export const background_variant_2 = '#FFA001'; // yellowish/orange
 export const background_variant_3 = 'rgba(205, 205, 224, 0.08)'; // transparent(showing dark_blue/slate background) - for form inputs
 export const background_variant_4 = '#CDCDE0'; // transparent(showing dark_blue/slate background) - for form inputs
