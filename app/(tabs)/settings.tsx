@@ -9,6 +9,15 @@ const Settings = () => {
       <Link href='/' className='underline'>
         Home
       </Link>
+      <Link href='/chat' className='underline'>
+        Chat
+      </Link>
+      <Link href='/sign-up' className='underline'>
+        Sign Up
+      </Link>
+      <Link href='/log-in' className='underline'>
+        Log In
+      </Link>
     </View>
   );
 };

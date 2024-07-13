@@ -4,9 +4,13 @@ import { TabBarIcons } from '@/constants/Icons';
 import {
   background_variant_1,
   background_variant_2,
+  background_variant_1_light,
   text_variant_1,
 } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import UnreadChatsTabMenuIndicator from '@/components/UnreadChatsTabMenuIndicator';
+import { View } from 'react-native';
+import LoggedInTabMenuProfileContent from '@/components/LoggedInTabMenuProfileContent';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -21,17 +25,17 @@ export default function TabLayout() {
         tabBarLabelPosition: 'below-icon',
         tabBarLabelStyle: {
           paddingTop: 5,
-          paddingBottom: 7,
-          // fontFamily: 'Nunito_600SemiBold',
+          paddingBottom: 3,
+          fontFamily: 'font_500',
         },
         tabBarIconStyle: {
           marginTop: 5,
         },
         tabBarStyle: {
-          backgroundColor: `${background_variant_1}`,
+          backgroundColor: `${background_variant_1_light}`,
           borderTopWidth: 1,
           borderTopColor: '#232533',
-          minHeight: 55,
+          minHeight: 60,
           // paddingVertical: 10,
         },
       }}
@@ -41,13 +45,18 @@ export default function TabLayout() {
         options={{
           title: 'Chats',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcons
-              name={
-                focused ? 'chatbubble-ellipses' : 'chatbubble-ellipses-outline'
-              }
-              color={color}
-              size={23}
-            />
+            <View className='relative'>
+              <TabBarIcons
+                name={
+                  focused
+                    ? 'chatbubble-ellipses'
+                    : 'chatbubble-ellipses-outline'
+                }
+                color={color}
+                size={23}
+              />
+              <UnreadChatsTabMenuIndicator />
+            </View>
           ),
         }}
       />
@@ -69,11 +78,12 @@ export default function TabLayout() {
         options={{
           title: 'You',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcons
-              name={focused ? 'person-circle' : 'person-circle-outline'}
-              color={color}
-              size={27}
-            />
+            // <TabBarIcons
+            //   name={focused ? 'person-circle' : 'person-circle-outline'}
+            //   color={color}
+            //   size={27}
+            // />
+            <LoggedInTabMenuProfileContent />
           ),
         }}
       />

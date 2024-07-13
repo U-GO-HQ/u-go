@@ -7,6 +7,8 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import { StatusBar } from 'react-native';
+import { background_variant_1_light } from '@/constants/colors';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -63,13 +65,19 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-        <Stack.Screen name='(chat)' options={{ headerShown: false }} />
-        <Stack.Screen name='+not-found' />
-      </Stack>
-    </ThemeProvider>
+    <>
+      <StatusBar
+        backgroundColor={background_variant_1_light}
+        barStyle={'light-content'}
+      />
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+          <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+          <Stack.Screen name='(chat)' options={{ headerShown: false }} />
+          <Stack.Screen name='+not-found' />
+        </Stack>
+      </ThemeProvider>
+    </>
   );
 }
