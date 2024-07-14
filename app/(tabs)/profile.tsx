@@ -35,7 +35,7 @@ const Profile = () => {
 
   return (
     <KeyboardAvoidingView
-      className='flex flex-1 justify-center items-center flex-col gap-4'
+      className='flex flex-1 justify-center items-center flex-col w-full'
       style={{ backgroundColor: background_variant_1 }}
       behavior='padding'
       keyboardVerticalOffset={Platform.OS === 'ios' ? 45 : 0}
@@ -49,11 +49,11 @@ const Profile = () => {
           style={{ backgroundColor: background_variant_1 }}
         > */}
         <View
-          className='header flex flex-1 flex-row justify-between items-center w-full 
+          className='header flex flex-row justify-between items-center w-full 
         px-3 py-3 mb-[20px]'
           style={{ backgroundColor: background_variant_1_light }}
         >
-          <View className='flex flex-row gap-8 items-center'>
+          <View className='flex flex-row gap-x-8 items-center'>
             <Pressable onPress={() => router.back()}>
               <Ionicons
                 name='arrow-back-outline'
@@ -96,12 +96,12 @@ const Profile = () => {
             </View>
           </View>
         </View>
-        <View className='other-update-data-wrapper flex gap-4'>
+        <View className='other-updates-section flex gap-y-4 px-3 mb-[100px]'>
           <View className='username flex relative flex-row gap-4'>
             <Ionicons name='person-outline' size={22} color={text_variant_1} />
             <Pressable
               onPress={() => setShowNameInput(true)}
-              className='absolute right-8 z-20'
+              className='absolute right-3 z-20'
               // style={{ backgroundColor: background_variant_2 }}
             >
               <View className='relative z-10'>
@@ -124,9 +124,9 @@ const Profile = () => {
               >
                 <TextInput
                   className='px-[15px]'
-                  // placeholder='Andrew James Okpainmo'
+                  placeholder='add your new user name'
                   style={{
-                    width: '85%',
+                    width: '80%',
                     paddingHorizontal: 15,
                     paddingVertical: 12,
                     backgroundColor: `${background_variant_3}`,
@@ -137,7 +137,7 @@ const Profile = () => {
                   }}
                   multiline={true}
                   placeholderTextColor={text_variant_1} // Set the placeholder color here
-                  value='Andrew James Okpainmo'
+                  // value='Andrew James Okpainmo'
                   // value={loginForm.password}
                   // onChangeText={(text) => {
                   //   // console.log('password input in progress...');
@@ -180,7 +180,7 @@ const Profile = () => {
               </Text>
             </View>
           </View>
-          <View className='about relative flex flex-row gap-4'>
+          <View className='about-section relative flex flex-row gap-4'>
             <Ionicons
               name='alert-circle-outline'
               size={22}
@@ -188,7 +188,7 @@ const Profile = () => {
             />
             <Pressable
               onPress={() => setShowAboutInput(true)}
-              className='absolute right-8 z-20'
+              className='absolute right-3 z-20'
             >
               <View className='relative z-10'>
                 <Ionicons
@@ -205,8 +205,21 @@ const Profile = () => {
               >
                 About
               </Text>
+
+              <Text
+                className={`user-status mb-[15px] text-[12px] w-[80%] ${
+                  showAboutInput ? 'hidden' : 'flex'
+                }`}
+                style={{ color: text_variant_1, fontFamily: 'font_200' }}
+              >
+                This is your u-go username, and will be visible to your u-go
+                contacts, this is your u-go username, and will be visible to
+                your u-go contacts.
+              </Text>
               <View
-                className={`${showAboutInput ? 'flex' : 'hidden'} mb-[15px]`}
+                className={`about-update-section ${
+                  showAboutInput ? 'flex' : 'hidden'
+                } mb-[15px]`}
               >
                 <TextInput
                   placeholder='write something about yourself'
@@ -223,9 +236,9 @@ const Profile = () => {
                   }}
                   multiline={true}
                   placeholderTextColor={text_variant_1} // Set the placeholder color here
-                  value='This is your u-go username, and will be visible to your u-go
-                  contacts, this is your u-go username, and will be visible to
-                  your u-go contacts.'
+                  // value='This is your u-go username, and will be visible to your u-go
+                  // contacts, this is your u-go username, and will be visible to
+                  // your u-gor contacts.'
                   // value={loginForm.password}
                   // onChangeText={(text) => {
                   //   // console.log('password input in progress...');
@@ -251,16 +264,6 @@ const Profile = () => {
                   </Text>
                 </Pressable>
               </View>
-              <Text
-                className={`user-status mb-[15px] text-[12px] w-[80%] ${
-                  showAboutInput ? 'hidden' : 'flex'
-                }`}
-                style={{ color: text_variant_1, fontFamily: 'font_200' }}
-              >
-                This is your u-go username, and will be visible to your u-go
-                contacts, this is your u-go username, and will be visible to
-                your u-go contacts.
-              </Text>
             </View>
           </View>
           <View className='phone flex flex-row gap-4'>
@@ -281,6 +284,7 @@ const Profile = () => {
             </View>
           </View>
         </View>
+
         {/* </View> */}
       </ScrollView>
     </KeyboardAvoidingView>
