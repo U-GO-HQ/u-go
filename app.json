@@ -32,15 +32,15 @@
         "expo-font",
         {
           "fonts": [
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_100Thin.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_200ExtraLight.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_300Light.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_400Regular.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_500Medium.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_600SemiBold.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_700Bold.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_800ExtraBold.tff",
-            "node_modules/@expo-google-fonts/poppins/poppins/Poppins_900Black.tff"
+            "node_modules/@expo-google-fonts/poppins/Poppins_100Thin.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_200ExtraLight.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_300Light.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_400Regular.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_500Medium.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_600SemiBold.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_700Bold.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_800ExtraBold.tff",
+            "node_modules/@expo-google-fonts/poppins/Poppins_900Black.tff"
           ]
         }
       ]
