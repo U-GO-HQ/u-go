@@ -13,10 +13,12 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import React, { useState } from 'react';
+// import { Image } from 'expo-image';
 import {
   background_variant_1,
   background_variant_2,
   background_variant_3,
+  background_variant_4,
   background_variant_1_light,
   text_variant_1,
   text_variant_2,
@@ -33,216 +35,247 @@ const Profile = () => {
   const [showNameInput, setShowNameInput] = useState(false);
   const [showAboutInput, setShowAboutInput] = useState(false);
 
+  const blurhash =
+    '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+
   return (
     <KeyboardAvoidingView
-      className='flex flex-1 justify-center items-center flex-col w-full'
-      style={{ backgroundColor: background_variant_1 }}
+      className='flex flex-1 justify-center items-center flex-col w-full min-h-screen'
+      style={{ backgroundColor: background_variant_1_light }}
       behavior='padding'
       keyboardVerticalOffset={Platform.OS === 'ios' ? 45 : 0}
     >
-      <ScrollView
-        className='flex flex-1 w-full min-h-screen'
-        style={styles.safePadding}
+      <View
+        className='relative w-full flex-1 mt-[10px] pt-[60px] pb-[60px]'
+        style={{ backgroundColor: background_variant_1_light }}
       >
         <View
-          className='header flex flex-row justify-between items-center w-full 
-        px-3 py-2 mb-[20px]'
+          className='header flex items-center flex-row absolute 
+          left-0 mb-[20px] px-2 pt-2 pb-2 w-full top-[40px] z-20'
           style={{ backgroundColor: background_variant_1_light }}
         >
-          <View className='flex flex-row items-center'>
-            <Pressable onPress={() => router.back()}>
-              <Ionicons
-                name='arrow-back-outline'
-                size={22}
-                color={text_variant_1}
-              />
-            </Pressable>
-            <View className='chat-card flex flex-row items-center gap-x-4 ml-2'>
-              <Image
-                style={{
-                  width: 50,
-                  objectFit: 'contain',
-                  height: 50,
-                  borderRadius: 50,
-                }}
+          <Pressable onPress={() => router.back()}>
+            <Ionicons
+              name='arrow-back-outline'
+              size={22}
+              color={text_variant_1}
+            />
+          </Pressable>
+          <View className='flex flex-row items-center gap-x-3 ml-2'>
+            <Image
+              style={{
+                width: 40,
+                objectFit: 'contain',
+                height: 40,
+                borderRadius: 50,
+              }}
+              source={mockAvatar1}
+              // resizeMethod='scale'
+              accessibilityLabel='user avatar'
+            />
+            {/* <Image
+                style={styles.image}
                 source={mockAvatar4}
-                // resizeMethod='scale'
-                accessibilityLabel='user avatar'
-              />
-              <View className='chat-info-wrapper flex justify-between'>
-                <Text
-                  className='text-[16px]'
-                  style={{ color: text_variant_1, fontFamily: 'font_600' }}
-                >
-                  Judith Ham
-                </Text>
-              </View>
+                // source='https://picsum.photos/seed/696/3000/2000'
+                placeholder={{ blurhash }}
+                contentFit='cover'
+                transition={1000}
+              /> */}
+            <View className='chat-info-wrapper flex justify-between'>
+            <Text
+              className='text-[16px]'
+              style={{ color: text_variant_1, fontFamily: 'font_600' }}
+            >
+              Judith Ham
+            </Text>
+            <Text
+              className='text-[11px] text-green-400 hidden'
+              style={{fontFamily: 'font_500' }}
+            >
+              online
+            </Text>
+            <Text
+              className='text-[11px] text-red-500 hidden'
+              style={{fontFamily: 'font_500' }}
+            >
+              offline
+            </Text>
+            <Text
+              className='text-[11px]'
+              style={{color: text_variant_3, fontFamily: 'font_500' }}
+            >
+            typing...
+            </Text>
             </View>
           </View>
-          {/* <Ionicons name='grid-outline' size={22} color={text_variant_1} /> */}
         </View>
-        <View className='messages-area px-3 flex flex-col gap-y-6 mb-16 relative z-10'>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+        <ScrollView
+          className='flex-1 w-full mt-[40px] pt-[20px] relative z-10'
+          style={{ backgroundColor: background_variant_1 }}
+        >
+          <View className='messages-area px-3 flex flex-col gap-y-6 mb-16 relative z-10'>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Hello Judith, How you're doing fine?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Hello Judith, How you're doing fine?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-              maxime voluptatum?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit, maxime voluptatum?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Nulla aperiam eveniet eos.
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Nulla aperiam eveniet eos.
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Hello Judith, How you're doing fine?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Hello Judith, How you're doing fine?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-              maxime voluptatum?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit, maxime voluptatum?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Nulla aperiam eveniet eos.
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Nulla aperiam eveniet eos.
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Hello Judith, How you're doing fine?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Hello Judith, How you're doing fine?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-              maxime voluptatum?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit, maxime voluptatum?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Nulla aperiam eveniet eos.
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Nulla aperiam eveniet eos.
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Hello Judith, How you're doing fine?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Hello Judith, How you're doing fine?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tr-none ml-auto'
-            style={{ backgroundColor: background_variant_1_light }}
-          >
-            <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-              Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
-              maxime voluptatum?
-            </Text>
-          </View>
-          <View
-            className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+              style={{ backgroundColor: background_variant_1_light }}
+            >
+              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit, maxime voluptatum?
+              </Text>
+            </View>
+            <View
+              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
             rounded-tl-none relative right-0'
-            style={{ backgroundColor: background_variant_2 }}
-          >
-            <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-              I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Nulla aperiam eveniet eos.
-            </Text>
+              style={{ backgroundColor: background_variant_4 }}
+            >
+              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Nulla aperiam eveniet eos.
+              </Text>
+            </View>
           </View>
-        </View>
-        {/* </View> */}
+        </ScrollView>
         <View
-          className='px-3 bg-transparent fixed flex flex-row 
-      z-20'
+          className='px-3 py-2 absolute bottom-0 left-0 flex-row 
+      z-20 w-full'
+          style={{ backgroundColor: background_variant_1 }}
         >
           <View className='w-[80%] mr-auto'>
             <TextInput
@@ -279,7 +312,7 @@ const Profile = () => {
             </Pressable>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   );
 };
@@ -288,7 +321,12 @@ export default Profile;
 
 const styles = StyleSheet.create({
   safePadding: {
-    paddingTop: Platform.OS === 'android' ? 45 : 0,
+    paddingTop: Platform.OS === 'android' ? 60 : 0,
     backgroundColor: background_variant_1,
+  },
+  image: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#0553',
   },
 });
