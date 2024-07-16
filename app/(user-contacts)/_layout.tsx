@@ -50,25 +50,21 @@ import { Link, router } from 'expo-router';
 //   </View>
 // );
 
-function ContactsLayout() {
+function UserContactsLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name='contacts'
+        name='user-contacts'
         // options={{
         //   headerLeft: () => <CustomComponent />,
         //   headerStyle: { backgroundColor: background_variant_1_light },
         // }}
-        options={{
-          // Hide the header for all other routes.
-          headerShown: false,
-        }}
       />
     </Stack>
   );
 }
 
-export default ContactsLayout;
+export default UserContactsLayout;
 
 const styles = StyleSheet.create({
   container: {
