@@ -99,19 +99,6 @@ const Profile = () => {
         <View className='other-updates-section flex gap-y-4 px-3 mb-[100px]'>
           <View className='username flex relative flex-row gap-4'>
             <Ionicons name='person-outline' size={22} color={text_variant_1} />
-            <Pressable
-              onPress={() => setShowNameInput(true)}
-              className='absolute right-3 z-20'
-              // style={{ backgroundColor: background_variant_2 }}
-            >
-              <View className='relative z-10'>
-                <Ionicons
-                  name='create-outline'
-                  size={22}
-                  color={text_variant_3}
-                />
-              </View>
-            </Pressable>
             <View className='user-details-wrapper flex justify-between w-full'>
               <Text
                 className='user-name text-[12px] mb-3'
@@ -179,6 +166,18 @@ const Profile = () => {
                 contacts.
               </Text>
             </View>
+            <Pressable
+              onPress={() => setShowNameInput(true)}
+              className='absolute right-3 z-20'
+              // style={{ backgroundColor: background_variant_2 }}
+            >
+              <Ionicons
+                className='relative z-10'
+                name='create-outline'
+                size={22}
+                color={text_variant_3}
+              />
+            </Pressable>
           </View>
           <View className='about-section relative flex flex-row gap-4'>
             <Ionicons
@@ -186,18 +185,7 @@ const Profile = () => {
               size={22}
               color={text_variant_1}
             />
-            <Pressable
-              onPress={() => setShowAboutInput(true)}
-              className='absolute right-3 z-20'
-            >
-              <View className='relative z-10'>
-                <Ionicons
-                  name='create-outline'
-                  size={22}
-                  color={text_variant_3}
-                />
-              </View>
-            </Pressable>
+
             <View className='user-details-wrapper flex justify-between w-full'>
               <Text
                 className='user-name text-[12px] mb-3'
@@ -205,7 +193,6 @@ const Profile = () => {
               >
                 About
               </Text>
-
               <Text
                 className={`user-status mb-[15px] text-[12px] w-[80%] ${
                   showAboutInput ? 'hidden' : 'flex'
@@ -265,6 +252,17 @@ const Profile = () => {
                 </Pressable>
               </View>
             </View>
+            <Pressable
+              onPress={() => setShowAboutInput(true)}
+              className='absolute right-3 z-20'
+            >
+              <Ionicons
+                className='relative z-10'
+                name='create-outline'
+                size={22}
+                color={text_variant_3}
+              />
+            </Pressable>
           </View>
           <View className='phone flex flex-row gap-4'>
             <Ionicons name='call-outline' size={22} color={text_variant_1} />
@@ -280,6 +278,23 @@ const Profile = () => {
                 style={{ color: text_variant_1, fontFamily: 'font_600' }}
               >
                 +234 90 5373 9194
+              </Text>
+            </View>
+          </View>
+          <View className='phone flex flex-row gap-4'>
+            <Ionicons name='mail-outline' size={22} color={text_variant_1} />
+            <View className='user-details-wrapper flex justify-between w-full'>
+              <Text
+                className='user-name text-[12px] mb-3'
+                style={{ color: text_variant_1, fontFamily: 'font_500' }}
+              >
+                Email
+              </Text>
+              <Text
+                className='user-name text-[12px]'
+                style={{ color: text_variant_1, fontFamily: 'font_600' }}
+              >
+                okpainmoandrew@gmail.com
               </Text>
             </View>
           </View>
