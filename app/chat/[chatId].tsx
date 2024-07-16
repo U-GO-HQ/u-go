@@ -19,6 +19,7 @@ import {
   background_variant_2,
   background_variant_3,
   background_variant_4,
+  background_variant_5,
   background_variant_1_light,
   text_variant_1,
   text_variant_2,
@@ -34,9 +35,23 @@ const mockAvatar4 = require('../../assets/images/img-12.png');
 const Profile = () => {
   const [showNameInput, setShowNameInput] = useState(false);
   const [showAboutInput, setShowAboutInput] = useState(false);
+  const [showMessageActionMenu, setShowMessageActionMenu] = useState(false);
+  const [isOverlayPairActive, setIsOverlayPairActive] = useState(false);
+  const messageIndex = 1;
 
   const blurhash =
     '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+
+  // function showMessageActionMenu(messageCardIndex) {
+  //   return st;
+  // }
+
+  // function OverlayCard(): any  {
+  //  const id_1 = {
+  //   color: isActive ? 'blue' : 'black',
+  //   fontWeight: isActive ? 'bold' : 'normal',
+  // };
+  // }
 
   return (
     <KeyboardAvoidingView
@@ -51,29 +66,34 @@ const Profile = () => {
       >
         <View
           className='header flex items-center flex-row absolute 
-          left-0 mb-[20px] px-2 pt-2 pb-2 w-full top-[40px] z-20'
+          left-0 px-2 pb-2 w-full top-[35px] z-20'
           style={{ backgroundColor: background_variant_1_light }}
         >
-          <Pressable onPress={() => router.back()}>
-            <Ionicons
-              name='arrow-back-outline'
-              size={22}
-              color={text_variant_1}
-            />
-          </Pressable>
-          <View className='flex flex-row items-center gap-x-3 ml-2'>
-            <Image
-              style={{
-                width: 40,
-                objectFit: 'contain',
-                height: 40,
-                borderRadius: 50,
-              }}
-              source={mockAvatar1}
-              // resizeMethod='scale'
-              accessibilityLabel='user avatar'
-            />
-            {/* <Image
+          <View
+            className={`items-center flex-row pt-[8px] ${
+              showMessageActionMenu && 'hidden'
+            }`}
+          >
+            <Pressable onPress={() => router.back()}>
+              <Ionicons
+                name='arrow-back-outline'
+                size={22}
+                color={text_variant_1}
+              />
+            </Pressable>
+            <View className='flex flex-row items-center gap-x-3 ml-2'>
+              <Image
+                style={{
+                  width: 40,
+                  objectFit: 'contain',
+                  height: 40,
+                  borderRadius: 50,
+                }}
+                source={mockAvatar1}
+                // resizeMethod='scale'
+                accessibilityLabel='user avatar'
+              />
+              {/* <Image
                 style={styles.image}
                 source={mockAvatar4}
                 // source='https://picsum.photos/seed/696/3000/2000'
@@ -81,31 +101,75 @@ const Profile = () => {
                 contentFit='cover'
                 transition={1000}
               /> */}
-            <View className='chat-info-wrapper flex justify-between'>
-            <Text
-              className='text-[16px]'
-              style={{ color: text_variant_1, fontFamily: 'font_600' }}
+              <View className='chat-info-wrapper flex justify-between'>
+                <Text
+                  className='text-[16px]'
+                  style={{ color: text_variant_1, fontFamily: 'font_600' }}
+                >
+                  Judith Ham
+                </Text>
+                <Text
+                  className='text-[11px] text-green-400 hidden'
+                  style={{ fontFamily: 'font_500' }}
+                >
+                  online
+                </Text>
+                <Text
+                  className='text-[11px] text-red-500 hidden'
+                  style={{ fontFamily: 'font_500' }}
+                >
+                  offline
+                </Text>
+                <Text
+                  className='text-[11px]'
+                  style={{ color: text_variant_3, fontFamily: 'font_500' }}
+                >
+                  typing...
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            className={`pt-[17.5px] flex-1 flex-row items-center ${
+              showMessageActionMenu ? 'flex' : 'hidden'
+            }`}
+          >
+            <Pressable
+              onPress={() => setShowMessageActionMenu(false)}
+              // className={`hidden z-20 ${
+              //   showMessageActionMenu && 'flex'
+              // }`}
             >
-              Judith Ham
-            </Text>
-            <Text
-              className='text-[11px] text-green-400 hidden'
-              style={{fontFamily: 'font_500' }}
+              <Ionicons
+                name='arrow-back-outline'
+                size={22}
+                color={text_variant_1}
+              />
+            </Pressable>
+            <View
+              className={`flex-1 flex-row gap-8 items-center justify-end`}
+              // style={{ backgroundColor: `${background_variant_1_light}` }}
             >
-              online
-            </Text>
-            <Text
-              className='text-[11px] text-red-500 hidden'
-              style={{fontFamily: 'font_500' }}
-            >
-              offline
-            </Text>
-            <Text
-              className='text-[11px]'
-              style={{color: text_variant_3, fontFamily: 'font_500' }}
-            >
-            typing...
-            </Text>
+              <Pressable
+              // onPress={() => setShowMessageActionMenu(false)}
+              // className={`z-20`}
+              >
+                <Ionicons
+                  name='star-outline'
+                  size={22}
+                  color={text_variant_1}
+                />
+              </Pressable>
+              <Pressable
+              // onPress={() => setShowMessageActionMenu(false)}
+              // className={`z-20`}
+              >
+                <Ionicons
+                  name='trash-outline'
+                  size={22}
+                  color={text_variant_1}
+                />
+              </Pressable>
             </View>
           </View>
         </View>
@@ -113,162 +177,71 @@ const Profile = () => {
           className='flex-1 w-full mt-[40px] pt-[20px] relative z-10'
           style={{ backgroundColor: background_variant_1 }}
         >
-          <View className='messages-area px-3 flex flex-col gap-y-6 mb-16 relative z-10'>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Hello Judith, How you're doing fine?
-              </Text>
+          <View className='messages-area flex flex-col gap-y-6 mb-16 relative z-10'>
+            <View className='message-group relative'>
+              {/* overlay to show when message is long-pressed for deleting */}
+              <View
+                className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                style={{ backgroundColor: background_variant_5 }}
+              >
+                {/* overlay to show when message is long-pressed for deleting */}
+              </View>
+              <Pressable
+                className='message-card mx-3 px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+                rounded-tr-none ml-auto relative z-10'
+                onLongPress={() => {
+                  setShowMessageActionMenu(true);
+                  setIsOverlayPairActive(true);
+                }}
+                style={{ backgroundColor: background_variant_1_light }}
+              >
+                <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                  Hello Judith, How you're doing fine?
+                </Text>
+              </Pressable>
             </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-              </Text>
+            <View className='message-group relative'>
+              {/* overlay to show when message is long-pressed for deleting */}
+              <View
+                className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                style={{ backgroundColor: background_variant_5 }}
+              >
+                {/* overlay to show when message is long-pressed for deleting */}
+              </View>
+              <Pressable
+                className='message-card mx-3 px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+                rounded-tl-none relative right-0 z-10'
+                onLongPress={() => setShowMessageActionMenu(true)}
+                style={{ backgroundColor: background_variant_4 }}
+              >
+                <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
+                  Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+                </Text>
+              </Pressable>
             </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit, maxime voluptatum?
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Nulla aperiam eveniet eos.
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Hello Judith, How you're doing fine?
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit, maxime voluptatum?
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Nulla aperiam eveniet eos.
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Hello Judith, How you're doing fine?
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit, maxime voluptatum?
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Nulla aperiam eveniet eos.
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Hello Judith, How you're doing fine?
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tr-none ml-auto'
-              style={{ backgroundColor: background_variant_1_light }}
-            >
-              <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
-                Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Suscipit, maxime voluptatum?
-              </Text>
-            </View>
-            <View
-              className='px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
-            rounded-tl-none relative right-0'
-              style={{ backgroundColor: background_variant_4 }}
-            >
-              <Text style={{ color: text_variant_2, fontFamily: 'font_300' }}>
-                I'm doing well, thanks. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Nulla aperiam eveniet eos.
-              </Text>
+            <View className='message-group relative'>
+              {/* overlay to show when message is long-pressed for deleting */}
+              <View
+                className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                style={{ backgroundColor: background_variant_5 }}
+              >
+                {/* overlay to show when message is long-pressed for deleting */}
+              </View>
+              <Pressable
+                className='message-card mx-3 px-3 py-3 max-w-[80%] flex flex-row items-center rounded-[15px] 
+                rounded-tr-none ml-auto relative z-10'
+                onLongPress={() => setShowMessageActionMenu(true)}
+                style={{ backgroundColor: background_variant_1_light }}
+              >
+                <Text style={{ color: text_variant_1, fontFamily: 'font_300' }}>
+                  Yes I am Andrew, How you doing? Lorem ipsum dolor sit amet.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Suscipit, maxime voluptatum?
+                </Text>
+              </Pressable>
             </View>
           </View>
         </ScrollView>
