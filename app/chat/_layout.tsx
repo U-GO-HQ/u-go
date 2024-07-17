@@ -60,6 +60,13 @@ function ChatLayout() {
         //   headerStyle: { backgroundColor: background_variant_1_light },
         // }}
       />
+      <Stack.Screen
+        name='starred-messages'
+        // options={{
+        //   headerLeft: () => <CustomComponent />,
+        //   headerStyle: { backgroundColor: background_variant_1_light },
+        // }}
+      />
     </Stack>
   );
 }
