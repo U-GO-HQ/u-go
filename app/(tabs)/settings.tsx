@@ -138,8 +138,8 @@ const Profile = () => {
               >
                 Theme
               </Text>
-              <View className='flex flex-row items-center justify-between gap-x-6 w-[80%]'>
-                <View className='w-[90%]'>
+              <View className='flex flex-row items-center justify-between gap-x-6 w-[85%]'>
+                <View className='w-[95%]'>
                   <Text
                     className='text-[11px] mt-[3px]'
                     style={{ color: text_variant_1, fontFamily: 'font_200' }}
@@ -148,7 +148,7 @@ const Profile = () => {
                     theme.
                   </Text>
                 </View>
-                <View className='w-[10%]'>
+                <View className='w-[5%]'>
                   <Switch
                     value={isDarkMode}
                     // trackColor={{ false: '#1d1d2b', true: '#CDCDE0' }}
