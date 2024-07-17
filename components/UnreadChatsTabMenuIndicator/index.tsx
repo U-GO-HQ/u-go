@@ -11,18 +11,22 @@ import {
 
 const UnreadChatsTabMenuIndicator = () => {
   return (
-    <Text
+    <View
       className='chat-count-wrapper min-w-[22px] absolute left-[15px] top-[8px] h-[18px] rounded-full 
-              px-[3px] py-[3px] text-center bg-red-600 text-white'
-      style={{
-        // backgroundColor: background_variant_1,
-        // color: text_variant_1,
-        fontFamily: 'font_600',
-        fontSize: 10,
-      }}
+              px-[3px] py-[2px] text-center bg-red-600'
     >
-      99+
-    </Text>
+      <Text
+        className='text-white'
+        style={{
+          // backgroundColor: background_variant_1,
+          // color: text_variant_1,
+          fontFamily: 'font_600',
+          fontSize: 10,
+        }}
+      >
+        99+
+      </Text>
+    </View>
   );
 };
 
