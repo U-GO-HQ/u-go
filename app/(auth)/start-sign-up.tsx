@@ -11,7 +11,6 @@ import {
   TextInput,
   KeyboardAvoidingView,
   TouchableOpacity,
-  Modal,
 } from 'react-native';
 import React, { useState } from 'react';
 import {
@@ -31,7 +30,7 @@ const mockAvatar2 = require('../../assets/images/img-10.png');
 const mockAvatar3 = require('../../assets/images/img-11.png');
 const mockAvatar4 = require('../../assets/images/img-12.png');
 
-const LogIn = () => {
+const StartSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -55,17 +54,47 @@ const LogIn = () => {
             className='text-[30px]'
             style={{ color: text_variant_1, fontFamily: 'font_800' }}
           >
-            Get back on
+            Get started on
           </Text>
           <Text
             className='text-[30px] translate-y-[-10px]'
             style={{ color: text_variant_3, fontFamily: 'font_800' }}
           >
-            your go!
+            u-go!
           </Text>
         </View>
         <View className='sign-up-form-wrapper mt-[40px]'>
-          <View className='input-group email flex gap-y-2 mb-[40px]'>
+          <View className='input-group password flex gap-y-2 mb-[40px] relative'>
+            <Text
+              className='label'
+              style={{ color: text_variant_1, fontFamily: 'font_400' }}
+            >
+              Name
+            </Text>
+            <TextInput
+              placeholder='Tell us your name'
+              style={{
+                width: '100%',
+                paddingHorizontal: 15,
+                paddingVertical: 15,
+                backgroundColor: `${background_variant_3}`,
+                borderRadius: 10,
+                color: `${text_variant_1}`,
+                fontSize: 14,
+                fontFamily: 'font_400',
+              }}
+              placeholderTextColor={text_variant_1} // Set the placeholder color here
+              // value={StartSignUpForm.email}
+              onChangeText={(text) => {
+                // console.log('email input in progress...');
+                // setStartSignUpForm({
+                //   ...StartSignUpForm,
+                //   email: text,
+                // });
+              }}
+            />
+          </View>
+          <View className='input-group email flex gap-y-2 mb-[20px]'>
             <Text
               className='label'
               style={{ color: text_variant_1, fontFamily: 'font_400' }}
@@ -85,79 +114,16 @@ const LogIn = () => {
                 fontFamily: 'font_400',
               }}
               placeholderTextColor={text_variant_1} // Set the placeholder color here
-              // value={loginForm.email}
+              // value={StartSignUpForm.email}
               onChangeText={(text) => {
                 // console.log('email input in progress...');
-                // setLoginForm({
-                //   ...loginForm,
+                // setStartSignUpForm({
+                //   ...StartSignUpForm,
                 //   email: text,
                 // });
               }}
             />
           </View>
-          <View className='input-group password flex gap-y-2 mb-[20px] relative'>
-            <Text
-              className='label'
-              style={{ color: text_variant_1, fontFamily: 'font_400' }}
-            >
-              Password
-            </Text>
-            <TextInput
-              placeholder='Enter password'
-              style={{
-                width: '100%',
-                paddingHorizontal: 15,
-                paddingVertical: 15,
-                backgroundColor: `${background_variant_3}`,
-                borderRadius: 10,
-                color: `${text_variant_1}`,
-                fontSize: 14,
-                fontFamily: 'font_400',
-              }}
-              placeholderTextColor={text_variant_1} // Set the placeholder color here
-              secureTextEntry={!showPassword}
-              // value={loginForm.email}
-              onChangeText={(text) => {
-                // console.log('email input in progress...');
-                // setLoginForm({
-                //   ...loginForm,
-                //   email: text,
-                // });
-              }}
-            />
-            <View
-              className='password-visibility-controller-wrapper absolute top-[50px] 
-            right-[15px]'
-            >
-              <Pressable
-                onPress={() => setShowPassword(true)}
-                className={`flex ${showPassword ? 'hidden' : 'flex'}`}
-              >
-                <Ionicons name='eye-outline' size={22} color={text_variant_1} />
-              </Pressable>
-              <Pressable
-                onPress={() => setShowPassword(false)}
-                className={`flex ${showPassword ? 'flex' : 'hidden'}`}
-              >
-                <Ionicons
-                  name='eye-off-outline'
-                  size={22}
-                  color={text_variant_1}
-                />
-              </Pressable>
-            </View>
-          </View>
-          <Link
-            className='mt-[10px] text-right w-full'
-            // href='/start-password-recovery'
-            href='/start-password-reset'
-            style={{
-              color: text_variant_3,
-              fontFamily: 'font_500',
-            }}
-          >
-            Forgot password?
-          </Link>
         </View>
         <View className='button-wrapper mt-[40px]'>
           <TouchableOpacity
@@ -170,7 +136,7 @@ const LogIn = () => {
               width: '100%',
               cursor: 'pointer',
             }}
-            onPress={() => router.push('/confirm-email_log-in')}
+            onPress={() => router.push('/confirm-email_sign-up')}
           >
             <Text
               style={{
@@ -194,16 +160,16 @@ const LogIn = () => {
               fontFamily: 'font_500',
             }}
           >
-            Don't have an account yet?
+            Already have an account yet?
           </Text>
           <Link
-            href='/start-sign-up'
+            href='/log-in'
             style={{
               color: `${text_variant_3}`,
               fontFamily: 'font_500',
             }}
           >
-            Sign-Up
+            Log-in
           </Link>
         </View>
       </ScrollView>
@@ -211,6 +177,6 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default StartSignUp;
 
 const styles = StyleSheet.create({});

@@ -14,25 +14,33 @@ import {
   Modal,
 } from 'react-native';
 import React, { useState } from 'react';
+import { BlurView } from 'expo-blur';
 import {
   background_variant_1,
   background_variant_2,
   background_variant_1_light,
   background_variant_3,
   background_variant_4,
+  background_variant_6,
+  background_variant_7,
   text_variant_1,
   text_variant_2,
   text_variant_3,
 } from '@/constants/colors';
 import { Link, router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import AuthSectionReturnButton from '@/components/auth/AuthSectionReturnButton';
 const mockAvatar1 = require('../../assets/images/img-8.jpg');
 const mockAvatar2 = require('../../assets/images/img-10.png');
 const mockAvatar3 = require('../../assets/images/img-11.png');
 const mockAvatar4 = require('../../assets/images/img-12.png');
+const signUpSuccessImage = require('../../assets/images/img-14.svg');
 
-const LogIn = () => {
-  const [showPassword, setShowPassword] = useState(false);
+const VerifyPhoneNumber = () => {
+  const [isCountDownComplete, setIsCountDownComplete] = useState(false);
+  const [isVerificationSuccessfull, setIsVerificationSuccessfull] =
+    useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <KeyboardAvoidingView
@@ -50,30 +58,26 @@ const LogIn = () => {
           paddingTop: Platform.OS === 'android' ? 65 : 0,
         }}
       >
-        <View className='bold page text'>
-          <Text
-            className='text-[30px]'
-            style={{ color: text_variant_1, fontFamily: 'font_800' }}
-          >
-            Get back on
-          </Text>
-          <Text
-            className='text-[30px] translate-y-[-10px]'
-            style={{ color: text_variant_3, fontFamily: 'font_800' }}
-          >
-            your go!
-          </Text>
-        </View>
-        <View className='sign-up-form-wrapper mt-[40px]'>
-          <View className='input-group email flex gap-y-2 mb-[40px]'>
+        <AuthSectionReturnButton />
+        <Text
+          className='bold-page-text text-[30px]'
+          style={{ color: text_variant_1, fontFamily: 'font_800' }}
+        >
+          Verify phone number
+        </Text>
+        <View className='confirmation-prompt mt-[40px]'>
+          <View className='flex gap-y-10 mb-[30px]'>
             <Text
               className='label'
               style={{ color: text_variant_1, fontFamily: 'font_400' }}
             >
-              Email
+              Enter the code that was sent to:{' '}
+              <Text style={{ color: text_variant_3 }}>+2349053739194</Text>
             </Text>
+          </View>
+          <View className='input-wrapper one-time-password-input-field flex gap-y-2 mb-[40px]'>
             <TextInput
-              placeholder='Enter your email'
+              placeholder='Enter the code you received'
               style={{
                 width: '100%',
                 paddingHorizontal: 15,
@@ -83,6 +87,7 @@ const LogIn = () => {
                 color: `${text_variant_1}`,
                 fontSize: 14,
                 fontFamily: 'font_400',
+                textAlign: 'center',
               }}
               placeholderTextColor={text_variant_1} // Set the placeholder color here
               // value={loginForm.email}
@@ -95,71 +100,30 @@ const LogIn = () => {
               }}
             />
           </View>
-          <View className='input-group password flex gap-y-2 mb-[20px] relative'>
+          <View className='resend-count-down flex items-center'>
             <Text
-              className='label'
-              style={{ color: text_variant_1, fontFamily: 'font_400' }}
+              className={`${isCountDownComplete ? 'flex' : 'hidden'}`}
+              style={{ color: text_variant_3, fontFamily: 'font_500' }}
             >
-              Password
+              Resend code
             </Text>
-            <TextInput
-              placeholder='Enter password'
-              style={{
-                width: '100%',
-                paddingHorizontal: 15,
-                paddingVertical: 15,
-                backgroundColor: `${background_variant_3}`,
-                borderRadius: 10,
-                color: `${text_variant_1}`,
-                fontSize: 14,
-                fontFamily: 'font_400',
-              }}
-              placeholderTextColor={text_variant_1} // Set the placeholder color here
-              secureTextEntry={!showPassword}
-              // value={loginForm.email}
-              onChangeText={(text) => {
-                // console.log('email input in progress...');
-                // setLoginForm({
-                //   ...loginForm,
-                //   email: text,
-                // });
-              }}
-            />
             <View
-              className='password-visibility-controller-wrapper absolute top-[50px] 
-            right-[15px]'
+              className={`${
+                isCountDownComplete
+                  ? 'hidden'
+                  : 'flex flex-row justify-center items-center gap-x-2'
+              }`}
             >
-              <Pressable
-                onPress={() => setShowPassword(true)}
-                className={`flex ${showPassword ? 'hidden' : 'flex'}`}
-              >
-                <Ionicons name='eye-outline' size={22} color={text_variant_1} />
-              </Pressable>
-              <Pressable
-                onPress={() => setShowPassword(false)}
-                className={`flex ${showPassword ? 'flex' : 'hidden'}`}
-              >
-                <Ionicons
-                  name='eye-off-outline'
-                  size={22}
-                  color={text_variant_1}
-                />
-              </Pressable>
+              <Text style={{ color: text_variant_3, fontFamily: 'font_500' }}>
+                Resend code in:
+              </Text>
+              <Text style={{ color: text_variant_3, fontFamily: 'font_500' }}>
+                00 : 60
+              </Text>
             </View>
           </View>
-          <Link
-            className='mt-[10px] text-right w-full'
-            // href='/start-password-recovery'
-            href='/start-password-reset'
-            style={{
-              color: text_variant_3,
-              fontFamily: 'font_500',
-            }}
-          >
-            Forgot password?
-          </Link>
         </View>
-        <View className='button-wrapper mt-[40px]'>
+        <View className='button-wrapper mt-[30px]'>
           <TouchableOpacity
             style={{
               backgroundColor: background_variant_2,
@@ -170,7 +134,7 @@ const LogIn = () => {
               width: '100%',
               cursor: 'pointer',
             }}
-            onPress={() => router.push('/confirm-email_log-in')}
+            onPress={() => router.push('/create-password')}
           >
             <Text
               style={{
@@ -179,11 +143,11 @@ const LogIn = () => {
                 fontSize: 14,
               }}
             >
-              Continue
+              Verify and continue
             </Text>
           </TouchableOpacity>
         </View>
-        <View
+        {/* <View
           className='sign-up-instead-wrapper flex flex-wrap gap-x-2 flex-row 
         items-center justify-center mt-[20px]'
         >
@@ -205,12 +169,12 @@ const LogIn = () => {
           >
             Sign-Up
           </Link>
-        </View>
+        </View> */}
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
-export default LogIn;
+export default VerifyPhoneNumber;
 
 const styles = StyleSheet.create({});
