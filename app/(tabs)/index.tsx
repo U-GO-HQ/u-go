@@ -17,6 +17,7 @@ import {
   background_variant_1_light,
   background_variant_3,
   background_variant_4,
+  background_variant_6,
   text_variant_1,
   text_variant_2,
   text_variant_3,
@@ -104,12 +105,12 @@ const Home = () => {
         </Pressable>
       </View>
       <View
-        className='flex-1 relative w-full pt-[50px]'
+        className='flex-1 relative w-full pt-[55px]'
         style={{ backgroundColor: background_variant_1_light }}
       >
         <View
           className='header absolute 
-          left-0 px-3 pt-2 pb-3 w-full top-[40px] z-20'
+          left-0 px-3 pt-2 pb-2 w-full top-[25px] z-20'
           style={{ backgroundColor: background_variant_1_light }}
         >
           <View
@@ -118,12 +119,12 @@ const Home = () => {
             }`}
           >
             <Text
-              className='text-2xl'
-              style={{ fontFamily: 'font_600', color: text_variant_1 }}
+              className='text-[30px]'
+              style={{ fontFamily: 'font_700', color: text_variant_1 }}
             >
               u-go
             </Text>
-            <View className='flex flex-row gap-[25px]'>
+            <View className='flex flex-row items-center gap-[25px]'>
               <Ionicons
                 name='camera-outline'
                 size={22}
@@ -136,18 +137,22 @@ const Home = () => {
                   color={text_variant_1}
                 />
               </Pressable>
-              <Pressable onPress={() => setShowHeaderNavMenu(true)}>
+              <Pressable
+                className='w-[40px] h-[40px] rounded-full flex items-center justify-center'
+                style={{ backgroundColor: background_variant_6 }}
+                onPress={() => setShowHeaderNavMenu(true)}
+              >
                 <Ionicons
                   name='grid-outline'
-                  size={22}
-                  color={text_variant_1}
+                  size={18}
+                  color={text_variant_3}
                 />
               </Pressable>
             </View>
           </View>
           <Pressable
             onPress={() => setShowHeaderSearchTab(false)}
-            className={`hidden z-20 absolute left-3 top-[18px] ${
+            className={`hidden z-20 absolute left-3 top-[32px] ${
               showHeaderSearchTab && 'flex'
             }`}
           >
@@ -162,14 +167,14 @@ const Home = () => {
             style={{ backgroundColor: `${background_variant_1_light}` }}
           >
             <TextInput
-              className={`hidden z-10 top-0 left-0 rounded-full w-full ${
+              className={`hidden z-10 top-0 left-0 mt-[15px] rounded-full w-full ${
                 showHeaderSearchTab && 'flex'
               }`}
               placeholder='find a chat'
               style={{
                 width: '100%',
                 paddingHorizontal: 20,
-                paddingVertical: 6,
+                paddingVertical: 7,
                 backgroundColor: `${background_variant_3}`,
                 borderRadius: 7,
                 color: `${text_variant_1}`,

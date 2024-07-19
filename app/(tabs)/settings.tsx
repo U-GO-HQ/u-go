@@ -85,7 +85,7 @@ const Profile = () => {
             // resizeMethod='scale'
             accessibilityLabel='user avatar'
           />
-          <View className='chat-info-wrapper flex justify-between'>
+          <View className='flex justify-between'>
             <Text
               className='text-[16px]'
               style={{ color: text_variant_1, fontFamily: 'font_600' }}
@@ -163,6 +163,30 @@ const Profile = () => {
               </View>
             </View>
           </View>
+          <Pressable
+            className='px-3 py-3 flex flex-row items-center gap-x-6'
+            onPress={() => router.push('/log-in')}
+          >
+            <Ionicons
+              name='stop-circle-outline'
+              size={22}
+              color={text_variant_1}
+            />
+            <View className='flex justify-between'>
+              <Text
+                className='text-[14px]'
+                style={{ color: text_variant_1, fontFamily: 'font_500' }}
+              >
+                Log out
+              </Text>
+              <Text
+                className='text-[11px] mt-[3px]'
+                style={{ color: text_variant_1, fontFamily: 'font_200' }}
+              >
+                Just in case you wish to end a logged-in session
+              </Text>
+            </View>
+          </Pressable>
         </View>
 
         {/* </View> */}
