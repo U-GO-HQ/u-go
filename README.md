@@ -2,7 +2,7 @@
 
 U-go is a chat platform that takes a blockchain-adoption first approach by powering cryptocurrency(transaction)-based in-chat messages while also providing a robust social(chat) experience. The platform is to provide one of the **fastest** and **easiest** ways to on-board millions into the blockchain and cryptocurrency space. The platform also hopes to support other cryptocurrency-based activities like currency swapping and more.
 
-A mobile chat application inspired by Whatsapp, Discord, and Bitnob. Built with React Native(Back-end to be built with: NodeJs and Rust). U-go is the chat platform/application for the future of finance(DeFi). With adequate funding(hopefully through a feasible grant), u-go's blockchain payment service will be launching on the Solana blockchain with the aid of Solana Actions/Blinks.
+A mobile chat application inspired by Whatsapp, Discord, and Bitnob. Built with React Native(Back-end to be built with: NodeJs and Rust). U-go is the chat platform/application for the future of finance(DeFi). With adequate funding(hopefully through a feasible grant), u-go's blockchain payment service will be launching on the Solana blockchain mainly with the aid of Solana Actions/Blinks.
 
 The UI screenshots below shows **some** live/demo images of the u-go project.
 
@@ -23,6 +23,8 @@ Here's how u-go will operate in a summary:
 2. After onboarding, users will then add their Solana address in the wallet settings area.
 
 3. With their wallet addresses added to their profiles, and with a robust blockchain connecting backend - powered by state of the arts wallet service(s), other users(they also being able to do the same) can then easily send them cryptocurrency tokens without the extra hassle of requesting wallet addresses. As can be seen in the UI images above, this all will happen in-chat(with the aid of pop-up modals), with notifications being sent and received just like regular chat messages.
+
+As earlier stated, the platform also hopes to support other cryptocurrency-based activities like currency swapping and more.
 
 As can also be seen on the UI images above, u-go will enable conversations between 2 users - with the send button set to make a cryptocurrency transaction. The conversation changes to support text messages once the user focuses on the input(message) field to start typing.
 
