@@ -1,50 +1,60 @@
-# Welcome to your Expo app 👋
+# u-go.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+U-go is a chat platform that takes a blockchain-adoption first approach by powering crypto-currency(transaction)-based in-chat messages while also providing a robust social(chat) experience. The platform is to provide one of the **fastest** and **easiest** ways to on-board millions into the blockchain and cryptocurrency space. 
 
-## Get started
+A mobile chat application inspired by Whatsapp, Discord, and Bitnob. Built with React Native(Back-end to be built with: NodeJs and Rust). U-go is the chat platform/application for the future of finance(DeFi). With adequate funding(hopefully through a feasible grant), u-go's blockchain payment service will be launching on the Solana blockchain with the aid of Solana Actions/Blinks.
 
-1. Install dependencies
+The UI screenshots below shows **some** live/demo images of the u-go project.
 
-   ```bash
-   npm install
-   ```
+![u-go UI-composition pitch photo](/assets/images/WhatsApp%20Image%202024-07-24%20at%2011.55.04_13277373.jpg)
 
-2. Start the app
+![u-go UI-composition pitch photo](/assets/images/WhatsApp%20Image%202024-07-24%20at%2011.55.04_4d972c5b.jpg)
 
-   ```bash
-    npx expo start
-   ```
+![u-go UI-composition pitch photo](/assets/images/WhatsApp%20Image%202024-07-24%20at%2011.55.05_6f07c416.jpg)
 
-In the output, you'll find options to open the app in a
+![u-go UI-composition pitch photo](/assets/images/WhatsApp%20Image%202024-07-24%20at%2011.55.05_fc8d4ac6.jpg)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+![u-go UI-composition pitch photo](/assets/images/WhatsApp%20Image%202024-07-24%20at%2011.55.05_05f8323d.jpg)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Here's how u-go will operate in a summary:
 
-## Get a fresh project
+1. Users sign-up with their email and phones number(both to be verified at sign-up). This will enable users to be able to find other u-go users by searching through their phone contact lists - very much like Whatsapp and Telegram.
 
-When you're ready, run:
+2. After onboarding, users will then add their Solana address in the wallet settings area.
 
-```bash
-npm run reset-project
-```
+3. With their wallet addresses added to their profiles, and with a robust blockchain connecting backend - powered by state of the arts wallet service(s), other users(they also being able to do the same) can then easily send them cryptocurrency tokens without the extra hassle of requesting wallet addresses. As can be seen in the UI images above, this all will happen in-chat(with the aid of pop-up modals), with notifications being sent and received just like regular chat messages.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+As can also be seen on the UI images above, u-go will enable conversations between 2 users - with the send button set to make a cryptocurrency transaction. The conversation changes to support text messages once the user focuses on the input(message) field to start typing.
 
-## Learn more
+U-go is set to disrupt the social(chat) space in a way that promotes crypto-currency adoption, while enhancing a robust social experience like no other platform has done already.
 
-To learn more about developing your project with Expo, look at the following resources:
+This repository is for only the mobile app front-end(as per the current build/development progress). A separate repository will
+be created for the project's NodeJs/Rust backend subsequently.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Getting started.
 
-## Join the community
+Special Requirements/Good to haves: 
 
-Join our community of developers creating universal apps.
+1. Android Studio or Xcode(enabled with a simulator/emulator).  
+2. A basic knowledge of building mobile applications with React Native and Expo.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## How to run the project.
+
+1. Fork the project, and clone your forked repository.
+2. Install all project dependencies.
+
+> npm install
+
+3. Run the development server:
+
+> npm start
+
+Finally, follow the CLI prompt and open to view the application on your available platform.
+
+...more README updates on the way.
+
+⚠️⚠️⚠️
+
+This project is open-source, but - License is not MIT
+
+Send an email for contributions and help/permission(s): okpainmoandrew@gmail.com
