@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Image } from 'expo-image';
 import {
   background_variant_1,
@@ -38,6 +38,7 @@ const Chat = () => {
   const [showAboutInput, setShowAboutInput] = useState(false);
   const [showMessageActionMenu, setShowMessageActionMenu] = useState(false);
   const [isMessageStarred, setIsMessageStarred] = useState(false);
+  const [isTransactionMessage, setIsTransactionMessage] = useState(true);
 
   const [isOverlayPairActive, setIsOverlayPairActive] = useState(false);
   const messageIndex = 1;
@@ -55,6 +56,10 @@ const Chat = () => {
   //   fontWeight: isActive ? 'bold' : 'normal',
   // };
   // }
+
+  // useEffect(() => {
+  //   setIsTransactionMessage(true);
+  // }, []);
 
   return (
     <KeyboardAvoidingView
@@ -183,7 +188,7 @@ const Chat = () => {
           </View>
         </View>
         <ScrollView
-          className='flex-1 w-full mt-[40px] pt-[20px] relative z-10'
+          className='flex-1 w-full mt-[40px] relative z-10'
           style={{ backgroundColor: background_variant_1 }}
         >
           <View className='messages-area flex mb-16 relative z-10'>
@@ -201,7 +206,9 @@ const Chat = () => {
             message-groups will also be sub-arrays grouped within various date-groups*/}
             {/* No vertical or horizontal paddings for date-groups so that the groupings will not
             be noticed on the UI */}
-            <View className={`${messages < 1 ? 'hidden' : 'flex'}`}>
+            <View
+              className={`${messages < 1 ? 'hidden' : 'flex flex-1 gap-y-6'}`}
+            >
               <View className='date-group flex-col gap-y-6'>
                 <View className='date flex flex-row items-center justify-center'>
                   <View
@@ -230,50 +237,6 @@ const Chat = () => {
                   </View>
                   <Pressable
                     className='message-card mx-3 px-3 py-3 max-w-[80%] flex rounded-[15px] 
-                rounded-tr-none ml-auto relative z-10'
-                    onLongPress={() => {
-                      setShowMessageActionMenu(true);
-                      setIsOverlayPairActive(true);
-                    }}
-                    style={{ backgroundColor: background_variant_1_light }}
-                  >
-                    <Text
-                      style={{ color: text_variant_1, fontFamily: 'font_300' }}
-                    >
-                      Hello Judith, Hope you're doing fine?
-                    </Text>
-                    <View className='mt-4 flex flex-row justify-end gap-x-2 items-center'>
-                      <View
-                        className={`${
-                          isMessageStarred ? 'flex' : 'hidden'
-                        } hidden`}
-                      >
-                        <Ionicons
-                          name='star'
-                          size={12}
-                          color={text_variant_1}
-                        />
-                      </View>
-                      <Text
-                        className='text-[12px]'
-                        style={{ color: text_variant_1 }}
-                      >
-                        1:02 PM
-                      </Text>
-                    </View>
-                  </Pressable>
-                </View>
-                <View className='message-group relative'>
-                  {/* overlay to show when message is long-pressed for deleting */}
-                  <View
-                    className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
-                  h-full py-3`}
-                    style={{ backgroundColor: background_variant_5 }}
-                  >
-                    {/* overlay to show when message is long-pressed for deleting */}
-                  </View>
-                  <Pressable
-                    className='message-card mx-3 px-3 py-3 max-w-[80%] flex rounded-[15px] 
                 rounded-tl-none relative right-0 z-10'
                     onLongPress={() => setShowMessageActionMenu(true)}
                     style={{ backgroundColor: background_variant_4 }}
@@ -281,8 +244,8 @@ const Chat = () => {
                     <Text
                       style={{ color: text_variant_2, fontFamily: 'font_300' }}
                     >
-                      Yes I am Andrew, How you doing? Lorem ipsum dolor sit
-                      amet.
+                      Hi Andrew, How you doing? Please send me some USDT on
+                      Solana.
                     </Text>
                     <View className='mt-4 flex flex-row justify-end gap-x-2 items-center'>
                       <View
@@ -323,9 +286,8 @@ const Chat = () => {
                     <Text
                       style={{ color: text_variant_1, fontFamily: 'font_300' }}
                     >
-                      Yes I am Andrew, How you doing? Lorem ipsum dolor sit
-                      amet. Lorem ipsum dolor sit amet consectetur adipisicing
-                      elit. Suscipit, maxime voluptatum?
+                      Hey Judith, I'm doing great. Alright, I'll send ASAP.
+                      You've set up your Solana address on u-go right?
                     </Text>
                     <View className='mt-4 flex flex-row justify-end gap-x-2 items-center'>
                       <View
@@ -348,16 +310,347 @@ const Chat = () => {
                     </View>
                   </Pressable>
                 </View>
+                <View className='message-group relative'>
+                  {/* overlay to show when message is long-pressed for deleting */}
+                  <View
+                    className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                    style={{ backgroundColor: background_variant_5 }}
+                  >
+                    {/* overlay to show when message is long-pressed for deleting */}
+                  </View>
+                  <Pressable
+                    className='message-card mx-3 px-3 py-3 max-w-[80%] flex rounded-[15px] 
+                rounded-tl-none relative right-0 z-10'
+                    onLongPress={() => setShowMessageActionMenu(true)}
+                    style={{ backgroundColor: background_variant_4 }}
+                  >
+                    <Text
+                      style={{ color: text_variant_2, fontFamily: 'font_300' }}
+                    >
+                      Yes I have. Thanks so much, will be expecting it soon 🥰.
+                    </Text>
+                    <View className='mt-4 flex flex-row justify-end gap-x-2 items-center'>
+                      <View
+                        className={`${
+                          isMessageStarred ? 'flex' : 'hidden'
+                        } hidden`}
+                      >
+                        <Ionicons
+                          name='star'
+                          size={12}
+                          color={text_variant_2}
+                        />
+                      </View>
+                      <Text
+                        className='text-[12px]'
+                        style={{ color: text_variant_2 }}
+                      >
+                        1:02 PM
+                      </Text>
+                    </View>
+                  </Pressable>
+                </View>
+                <View className='message-group relative'>
+                  {/* overlay to show when message is long-pressed for deleting */}
+                  <View
+                    className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                    style={{ backgroundColor: background_variant_5 }}
+                  >
+                    {/* overlay to show when message is long-pressed for deleting */}
+                  </View>
+                  <Pressable
+                    className='message-card mx-3 px-3 py-3 max-w-[80%] flex rounded-[15px] 
+                rounded-tr-none ml-auto relative z-10'
+                    onLongPress={() => setShowMessageActionMenu(true)}
+                    style={{ backgroundColor: background_variant_1_light }}
+                  >
+                    <View className='transaction min-h-[100px] flex flex-col gap-y-3 items-center w-full flex-1 p-3'>
+                      <View
+                        style={{ backgroundColor: background_variant_1 }}
+                        className='flex-1 w-[75px] h-[75px] rounded-full justify-center items-center'
+                      >
+                        <Ionicons
+                          name='checkmark-done-circle'
+                          size={45}
+                          color={text_variant_1}
+                        />
+                      </View>
+                      <View className='gap-y-2 justify-center'>
+                        <Text
+                          style={{
+                            color: text_variant_1,
+                            textAlign: 'center',
+                            fontFamily: 'font_500',
+                          }}
+                        >
+                          Outgoing: USDT50
+                        </Text>
+                        <Text
+                          style={{
+                            color: text_variant_1,
+                            textAlign: 'center',
+                            fontFamily: 'font_500',
+                          }}
+                        >
+                          Transaction ID: 6764 6746 7881 4635
+                        </Text>
+                        <Text
+                          style={{
+                            color: text_variant_1,
+                            textAlign: 'center',
+                            fontFamily: 'font_500',
+                          }}
+                        >
+                          Chain: Solana
+                        </Text>
+                      </View>
+                    </View>
+                    <View className='flex flex-row justify-end gap-x-2 items-center'>
+                      <View
+                        className={`${
+                          isMessageStarred ? 'flex' : 'hidden'
+                        } hidden`}
+                      >
+                        <Ionicons
+                          name='star'
+                          size={12}
+                          color={text_variant_1}
+                        />
+                      </View>
+                      <Text
+                        className='text-[12px]'
+                        style={{ color: text_variant_1 }}
+                      >
+                        1:02 PM
+                      </Text>
+                    </View>
+                  </Pressable>
+                </View>
+              </View>
+              <View className='date-group flex-col gap-y-6'>
+                <View className='date flex flex-row items-center justify-center'>
+                  <View
+                    className='rounded-[7px] px-3 py-[5px] w-[100px] flex flex-row items-center border'
+                    style={{
+                      backgroundColor: background_variant_1_light,
+                      borderColor: border_variant_1,
+                    }}
+                  >
+                    <Text
+                      className='flex flex-1 text-center text-[12px]'
+                      style={{ color: text_variant_1 }}
+                    >
+                      17/5/24
+                    </Text>
+                  </View>
+                </View>
+                <View className='message-group relative'>
+                  {/* overlay to show when message is long-pressed for deleting */}
+                  <View
+                    className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                    style={{ backgroundColor: background_variant_5 }}
+                  >
+                    {/* overlay to show when message is long-pressed for deleting */}
+                  </View>
+                  <Pressable
+                    className='message-card mx-3 px-3 py-3 max-w-[80%] flex rounded-[15px] 
+                rounded-tr-none ml-auto relative z-10'
+                    onLongPress={() => setShowMessageActionMenu(true)}
+                    style={{ backgroundColor: background_variant_1_light }}
+                  >
+                    <Text
+                      style={{ color: text_variant_1, fontFamily: 'font_300' }}
+                    >
+                      Hey Judith, I need you to send me some Sol. I need 125
+                      Sol. Can you?
+                    </Text>
+                    <View className='mt-4 flex flex-row justify-end gap-x-2 items-center'>
+                      <View
+                        className={`${
+                          isMessageStarred ? 'flex' : 'hidden'
+                        } hidden`}
+                      >
+                        <Ionicons
+                          name='star'
+                          size={12}
+                          color={text_variant_1}
+                        />
+                      </View>
+                      <Text
+                        className='text-[12px]'
+                        style={{ color: text_variant_1 }}
+                      >
+                        1:02 PM
+                      </Text>
+                    </View>
+                  </Pressable>
+                </View>
+                <View className='message-group relative'>
+                  {/* overlay to show when message is long-pressed for deleting */}
+                  <View
+                    className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                    style={{ backgroundColor: background_variant_5 }}
+                  >
+                    {/* overlay to show when message is long-pressed for deleting */}
+                  </View>
+                  <Pressable
+                    className='message-card mx-3 px-3 py-3 max-w-[80%] flex rounded-[15px] 
+                rounded-tl-none relative right-0 z-10'
+                    onLongPress={() => setShowMessageActionMenu(true)}
+                    style={{ backgroundColor: background_variant_4 }}
+                  >
+                    <View className='transaction min-h-[100px] flex flex-col gap-y-3 items-center w-full flex-1 p-3'>
+                      <View
+                        style={{ backgroundColor: background_variant_1 }}
+                        className='flex-1 w-[75px] h-[75px] rounded-full justify-center items-center'
+                      >
+                        <Ionicons
+                          name='checkmark-done-circle'
+                          size={45}
+                          color={text_variant_1}
+                        />
+                      </View>
+                      <View className='gap-y-2 justify-center'>
+                        <Text
+                          style={{
+                            color: text_variant_2,
+                            textAlign: 'center',
+                            fontFamily: 'font_500',
+                          }}
+                        >
+                          Incoming: SOL 125
+                        </Text>
+                        <Text
+                          style={{
+                            color: text_variant_2,
+                            textAlign: 'center',
+                            fontFamily: 'font_500',
+                          }}
+                        >
+                          Transaction ID: 6764 6746 7881 4635
+                        </Text>
+                        <Text
+                          style={{
+                            color: text_variant_2,
+                            textAlign: 'center',
+                            fontFamily: 'font_500',
+                          }}
+                        >
+                          Chain: Solana
+                        </Text>
+                      </View>
+                    </View>
+                    <View className='flex flex-row justify-end gap-x-2 items-center'>
+                      <View
+                        className={`${
+                          isMessageStarred ? 'flex' : 'hidden'
+                        } hidden`}
+                      >
+                        <Ionicons
+                          name='star'
+                          size={12}
+                          color={text_variant_2}
+                        />
+                      </View>
+                      <Text
+                        className='text-[12px]'
+                        style={{ color: text_variant_2 }}
+                      >
+                        1:02 PM
+                      </Text>
+                    </View>
+                  </Pressable>
+                </View>
+                <View className='message-group relative'>
+                  {/* overlay to show when message is long-pressed for deleting */}
+                  <View
+                    className={`message-card-overlay_${messageIndex} hidden w-full absolute z-20 
+                  h-full py-3`}
+                    style={{ backgroundColor: background_variant_5 }}
+                  >
+                    {/* overlay to show when message is long-pressed for deleting */}
+                  </View>
+                  <Pressable
+                    className='message-card mx-3 px-3 py-3 max-w-[80%] flex rounded-[15px] 
+                rounded-tl-none relative right-0 z-10'
+                    onLongPress={() => setShowMessageActionMenu(true)}
+                    style={{ backgroundColor: background_variant_4 }}
+                  >
+                    <Text
+                      style={{ color: text_variant_2, fontFamily: 'font_300' }}
+                    >
+                      Sure thing! sent already 🥰.
+                    </Text>
+                    <View className='mt-4 flex flex-row justify-end gap-x-2 items-center'>
+                      <View
+                        className={`${
+                          isMessageStarred ? 'flex' : 'hidden'
+                        } hidden`}
+                      >
+                        <Ionicons
+                          name='star'
+                          size={12}
+                          color={text_variant_2}
+                        />
+                      </View>
+                      <Text
+                        className='text-[12px]'
+                        style={{ color: text_variant_2 }}
+                      >
+                        1:02 PM
+                      </Text>
+                    </View>
+                  </Pressable>
+                </View>
               </View>
             </View>
           </View>
         </ScrollView>
+        {/* camera and attachment icons parent */}
+        <View
+          className='px-3 py-2 absolute bottom-[12px] right-[90px] flex flex-row 
+      z-30 w-[75px] justify-between'
+        >
+          <View className='attachment-icon-wrapper relative mr-[20px] flex flex-row items-center'>
+            <Pressable
+              className={`w-[25px] flex flex-row items-center justify-center 
+              rounded-full`}
+              // style={{ backgroundColor: background_variant_2 }}
+              // onPress={() => router.back()}
+            >
+              <Ionicons
+                name='attach-outline'
+                size={28}
+                color={text_variant_1}
+              />
+            </Pressable>
+          </View>
+          <View className='camera-icon-wrapper relative flex flex-row items-center'>
+            <Pressable
+              className={`w-[25px] flex flex-row items-center justify-center 
+              rounded-full`}
+              // style={{ backgroundColor: background_variant_2 }}
+              // onPress={() => router.back()}
+            >
+              <Ionicons
+                name='camera-outline'
+                size={25}
+                color={text_variant_1}
+              />
+            </Pressable>
+          </View>
+        </View>
+        {/* form field and message button wrapper */}
         <View
           className='px-3 py-2 absolute bottom-0 left-0 flex-row 
       z-20 w-full'
           style={{ backgroundColor: background_variant_1 }}
         >
-          <View className='w-[80%] mr-auto'>
+          <View className='w-[85%] mr-auto'>
             <TextInput
               className='rounded-full'
               placeholder='type your message'
@@ -380,15 +673,36 @@ const Chat = () => {
                 //   email: text,
                 // });
               }}
+              onFocus={() => {
+                // console.log(isTransactionMessage);
+                setIsTransactionMessage(false);
+              }}
+              onBlur={() => {
+                // console.log(isTransactionMessage);
+                setIsTransactionMessage(true);
+              }}
             />
           </View>
           <View className='w-[10%] mr-3'>
             <Pressable
-              className='w-[50px] h-[50px] flex flex-row items-center justify-center rounded-full mr-4'
+              className={`w-[50px] h-[50px] flex-row items-center justify-center 
+              rounded-full mr-4 ${isTransactionMessage ? 'hidden' : 'flex'}`}
               style={{ backgroundColor: background_variant_2 }}
-              onPress={() => router.back()}
+              // onPress={() => router.back()}
             >
               <Ionicons name='send-outline' size={22} color={text_variant_2} />
+            </Pressable>
+            <Pressable
+              className={`w-[50px] h-[50px] flex-row items-center justify-center 
+              rounded-full mr-4 ${isTransactionMessage ? 'flex' : 'hidden'}`}
+              style={{ backgroundColor: background_variant_2 }}
+              // onPress={() => router.back()}
+            >
+              <Ionicons
+                name='wallet-outline'
+                size={22}
+                color={text_variant_2}
+              />
             </Pressable>
           </View>
         </View>

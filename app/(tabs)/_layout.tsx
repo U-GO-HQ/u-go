@@ -63,12 +63,12 @@ export default function TabLayout() {
       <Tabs.Screen
         name='settings'
         options={{
-          title: 'Settings',
+          title: 'Wallet',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcons
-              name={focused ? 'cog' : 'cog-outline'}
+              name={focused ? 'wallet' : 'wallet-outline'}
               color={color}
-              size={27}
+              size={25}
             />
           ),
         }}
