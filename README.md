@@ -1,6 +1,6 @@
 # u-go.
 
-U-go is a chat platform that takes a blockchain-adoption first approach by powering crypto-currency(transaction)-based in-chat messages while also providing a robust social(chat) experience. The platform is to provide one of the **fastest** and **easiest** ways to on-board millions into the blockchain and cryptocurrency space. 
+U-go is a chat platform that takes a blockchain-adoption first approach by powering cryptocurrency(transaction)-based in-chat messages while also providing a robust social(chat) experience. The platform is to provide one of the **fastest** and **easiest** ways to on-board millions into the blockchain and cryptocurrency space. The platform also hopes to support other cryptocurrency-based activities like currency swapping and more.
 
 A mobile chat application inspired by Whatsapp, Discord, and Bitnob. Built with React Native(Back-end to be built with: NodeJs and Rust). U-go is the chat platform/application for the future of finance(DeFi). With adequate funding(hopefully through a feasible grant), u-go's blockchain payment service will be launching on the Solana blockchain with the aid of Solana Actions/Blinks.
 
