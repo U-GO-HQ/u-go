@@ -57,6 +57,6 @@ Finally, follow the CLI prompt and open to view the application on your availabl
 
 ⚠️⚠️⚠️
 
-This project is open-source, but - License is not MIT
+This project is open-source, but - with restricted permissions/privileges(license is NOT MIT)
 
 Send an email for contributions and help/permission(s): okpainmoandrew@gmail.com
